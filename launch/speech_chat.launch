@@ -1,0 +1,19 @@
+<launch>
+	<!--load aiml 'xml' file as a parameter-->
+	<param name="aiml_path" value="/home/kronton/localbot_ws/src/ros_aiml/data" />
+	
+	<!--launch "aiml server" node-->
+	<node name="aiml_server" pkg="ros_aiml" type="aiml_server.py" output="screen">
+	</node>
+
+	<!--"sound play" package launch file-->
+	<include file="$(find sound_play)/soundplay_node.launch"></include>
+
+	<!--launch "aiml tts" node-->
+	<node name="aiml_tts" pkg="ros_aiml" type="aiml_tts_client.py" output="screen">
+	</node>
+
+	<!--launch "aiml speech recog" node-->
+	<node name="aiml_speech" pkg="ros_aiml" type="aiml_speech_recog_client.py" output="screen">
+	</node>
+
